@@ -1,0 +1,15 @@
+.omx/
+
+# Local Python / Node artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+
+# Generated demo outputs. Keep directory placeholders in git.
+runtime/demo-runs/*
+!runtime/demo-runs/.gitkeep
+runtime/mock-orders/*
+!runtime/mock-orders/.gitkeep
+runtime/reports/*
+!runtime/reports/.gitkeep

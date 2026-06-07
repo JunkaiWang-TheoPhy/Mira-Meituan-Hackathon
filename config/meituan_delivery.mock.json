@@ -1,0 +1,26 @@
+{
+  "poi-familymart-001": {
+    "eta_minutes": 28,
+    "delivery_fee": 4.0,
+    "rain_delay_minutes": 4,
+    "fallback_store_id": "poi-pharmacy-001"
+  },
+  "poi-pharmacy-001": {
+    "eta_minutes": 33,
+    "delivery_fee": 5.0,
+    "rain_delay_minutes": 6,
+    "fallback_store_id": null
+  },
+  "poi-noodle-001": {
+    "eta_minutes": 35,
+    "delivery_fee": 5.0,
+    "rain_delay_minutes": 5,
+    "fallback_store_id": null
+  },
+  "poi-ride-001": {
+    "eta_minutes": 6,
+    "delivery_fee": 0.0,
+    "rain_delay_minutes": 3,
+    "fallback_store_id": null
+  }
+}

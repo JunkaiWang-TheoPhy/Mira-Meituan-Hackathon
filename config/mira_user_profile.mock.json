@@ -1,0 +1,25 @@
+{
+  "user_id": "demo-user",
+  "display_name": "Demo User",
+  "location_label": "公司附近",
+  "address_book": [
+    {
+      "label": "公司附近",
+      "address": "Mira Hackathon Demo Office",
+      "lat": 31.2304,
+      "lng": 121.4737
+    }
+  ],
+  "preferences": {
+    "delivery_preference": "30分钟内优先",
+    "avoid": ["太辣", "冰饮", "香菜"],
+    "usual_care_items": ["暖宝宝", "热饮", "常用卫生用品"],
+    "recent_meals": ["麻辣烫", "炸鸡"],
+    "comfort_food": ["清淡热汤面", "粥", "热豆浆"]
+  },
+  "privacy": {
+    "demo_mode": true,
+    "real_personal_data": false,
+    "health_data_policy": "mock_profile_only"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "default_bundle": "retail_killer_demo",
+  "bundles": {
+    "life_minimal": {
+      "title": "Life Minimal",
+      "description": "Smallest judge-safe set: food, instant retail, and commute reminders.",
+      "intents": [
+        "dining_recommendation",
+        "instant_retail_order",
+        "schedule_mobility_reminder"
+      ]
+    },
+    "retail_killer_demo": {
+      "title": "Retail Killer Demo",
+      "description": "Primary 90-second demo focused on Meituan-style instant retail fulfillment.",
+      "intents": [
+        "period_care_retail",
+        "rainy_day_retail_fallback",
+        "mock_order_confirmation",
+        "delivery_eta_tracking"
+      ]
+    },
+    "life_core": {
+      "title": "Life Core",
+      "description": "Main hackathon story across food, retail, mobility, entertainment, and budget.",
+      "intents": [
+        "dining_recommendation",
+        "instant_retail_order",
+        "schedule_mobility_reminder",
+        "weekend_entertainment",
+        "budget_summary"
+      ]
+    },
+    "life_full": {
+      "title": "Life Full",
+      "description": "Extended rehearsal bundle for a full local-life butler narrative.",
+      "intents": [
+        "dining_recommendation",
+        "instant_retail_order",
+        "schedule_mobility_reminder",
+        "weekend_entertainment",
+        "family_gift_care",
+        "monthly_budget_planning",
+        "life_daily_report"
+      ]
+    }
+  }
+}

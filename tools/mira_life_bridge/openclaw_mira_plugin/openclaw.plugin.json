@@ -1,0 +1,15 @@
+{
+  "name": "mira-life-butler",
+  "version": "0.1.0",
+  "description": "OpenClaw-style tools for Mira local-life butler demos.",
+  "entry": "index.mjs",
+  "tools": [
+    "mira_trigger_event",
+    "mira_propose_action",
+    "mira_confirm_action",
+    "mira_cancel_action",
+    "mira_check_budget",
+    "mira_place_mock_order",
+    "mira_track_fulfillment"
+  ]
+}

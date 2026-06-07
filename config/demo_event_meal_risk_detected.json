@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "event_type": "meal_risk_detected",
+  "timestamp": "2026-06-07T20:52:00+08:00",
+  "source": {
+    "watch": true,
+    "glasses": false,
+    "phone": true,
+    "calendar": true,
+    "meituan_mock": false,
+    "user_input": false
+  },
+  "confidence": 0.78,
+  "context": {
+    "location_label": "公司附近",
+    "time_of_day": "evening",
+    "weather": "rain",
+    "heart_state": "low_energy",
+    "last_meal_hours": 7.5,
+    "calendar_pressure": "overtime",
+    "budget_remaining": 1217.3,
+    "user_preferences": {
+      "avoid": ["香菜", "太辣"],
+      "recent_meals": ["麻辣烫", "炸鸡"],
+      "comfort_food": ["清淡热汤面", "粥"]
+    }
+  },
+  "policy": {
+    "requires_confirmation": true,
+    "max_budget": 60.0,
+    "privacy_level": "public_demo",
+    "can_place_order": true
+  }
+}

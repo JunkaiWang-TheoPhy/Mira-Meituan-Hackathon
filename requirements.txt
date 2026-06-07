@@ -1,0 +1,3 @@
+# The demo runtime intentionally uses Python standard library only.
+# Verification:
+#   python3 -m unittest discover -s tests

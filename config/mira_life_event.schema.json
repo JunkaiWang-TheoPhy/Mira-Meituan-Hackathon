@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mira.local/schemas/mira_life_event.schema.json",
+  "title": "Mira Life Event",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_type",
+    "timestamp",
+    "source",
+    "confidence",
+    "context",
+    "policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "meal_risk_detected",
+        "instant_retail_need_detected",
+        "period_care_needed",
+        "calendar_commute_risk",
+        "weekend_low_energy",
+        "weekend_high_energy",
+        "birthday_gift_due",
+        "budget_limit_warning",
+        "user_confirmed_action",
+        "user_rejected_action"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "watch": { "type": "boolean" },
+        "glasses": { "type": "boolean" },
+        "phone": { "type": "boolean" },
+        "calendar": { "type": "boolean" },
+        "meituan_mock": { "type": "boolean" },
+        "user_input": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "location_label": { "type": "string" },
+        "time_of_day": { "type": "string" },
+        "weather": { "type": "string" },
+        "heart_state": { "type": "string" },
+        "last_meal_hours": { "type": "number" },
+        "calendar_pressure": { "type": "string" },
+        "budget_remaining": { "type": "number" },
+        "user_preferences": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "requires_confirmation",
+        "max_budget",
+        "privacy_level",
+        "can_place_order"
+      ],
+      "properties": {
+        "requires_confirmation": { "type": "boolean" },
+        "max_budget": { "type": "number" },
+        "privacy_level": {
+          "type": "string",
+          "enum": ["public_demo", "mock_private", "sensitive"]
+        },
+        "can_place_order": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

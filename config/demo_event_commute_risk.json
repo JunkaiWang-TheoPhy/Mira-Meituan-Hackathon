@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "event_type": "calendar_commute_risk",
+  "timestamp": "2026-06-07T22:00:00+08:00",
+  "source": {
+    "watch": false,
+    "glasses": false,
+    "phone": true,
+    "calendar": true,
+    "meituan_mock": false,
+    "user_input": false
+  },
+  "confidence": 0.86,
+  "context": {
+    "location_label": "公司附近",
+    "time_of_day": "night",
+    "weather": "rain",
+    "calendar_pressure": "明早 8:00 跨区会议",
+    "budget_remaining": 1185.3,
+    "user_preferences": {
+      "departure_buffer_minutes": 15,
+      "preferred_pickup_time": "07:10"
+    }
+  },
+  "policy": {
+    "requires_confirmation": true,
+    "max_budget": 120.0,
+    "privacy_level": "public_demo",
+    "can_place_order": true
+  }
+}

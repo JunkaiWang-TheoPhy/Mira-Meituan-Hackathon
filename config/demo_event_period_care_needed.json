@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "event_type": "period_care_needed",
+  "timestamp": "2026-06-07T20:47:00+08:00",
+  "source": {
+    "watch": true,
+    "glasses": true,
+    "phone": true,
+    "calendar": true,
+    "meituan_mock": false,
+    "user_input": false
+  },
+  "confidence": 0.82,
+  "context": {
+    "location_label": "公司附近",
+    "time_of_day": "evening",
+    "weather": "rain",
+    "heart_state": "low_energy",
+    "last_meal_hours": 7.5,
+    "calendar_pressure": "连续会议后加班",
+    "budget_remaining": 1260.0,
+    "user_preferences": {
+      "delivery_preference": "30分钟内优先",
+      "avoid": ["太辣", "冰饮"],
+      "usual_care_items": ["暖宝宝", "热饮", "常用卫生用品"]
+    }
+  },
+  "policy": {
+    "requires_confirmation": true,
+    "max_budget": 80.0,
+    "privacy_level": "mock_private",
+    "can_place_order": true
+  }
+}

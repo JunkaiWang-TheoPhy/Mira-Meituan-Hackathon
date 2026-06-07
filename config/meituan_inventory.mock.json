@@ -1,0 +1,47 @@
+[
+  {
+    "sku_id": "sku-warmer-001",
+    "store_id": "poi-familymart-001",
+    "name": "暖宝宝",
+    "category": "care",
+    "price": 12.9,
+    "stock": 18,
+    "tags": ["usual_care_item", "warm"]
+  },
+  {
+    "sku_id": "sku-hotdrink-001",
+    "store_id": "poi-familymart-001",
+    "name": "热饮",
+    "category": "drink",
+    "price": 9.9,
+    "stock": 12,
+    "tags": ["usual_care_item", "warm", "no_ice"]
+  },
+  {
+    "sku_id": "sku-sanitary-001",
+    "store_id": "poi-familymart-001",
+    "name": "常用卫生用品",
+    "category": "care",
+    "price": 19.9,
+    "stock": 9,
+    "tags": ["usual_care_item", "private"]
+  },
+  {
+    "sku_id": "sku-soup-noodle-001",
+    "store_id": "poi-noodle-001",
+    "name": "清淡热汤面",
+    "category": "meal",
+    "price": 32.0,
+    "stock": 99,
+    "tags": ["comfort_food", "warm", "not_spicy"]
+  },
+  {
+    "sku_id": "sku-rice-porridge-001",
+    "store_id": "poi-noodle-001",
+    "name": "南瓜粥",
+    "category": "meal",
+    "price": 18.0,
+    "stock": 99,
+    "tags": ["comfort_food", "warm", "light"]
+  }
+]

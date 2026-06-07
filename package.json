@@ -1,0 +1,13 @@
+{
+  "name": "mira-meituan-hackathon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mira local-life butler demo built on OpenClaw-style memory, heartbeat, skills, and bridge layers.",
+  "scripts": {
+    "demo": "python3 scripts/run_mira_demo.py",
+    "demo:retail": "python3 scripts/run_instant_retail_demo.py",
+    "report": "python3 scripts/generate_life_report.py",
+    "test": "python3 -m unittest discover -s tests"
+  }
+}

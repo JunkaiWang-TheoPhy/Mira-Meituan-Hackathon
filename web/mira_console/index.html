@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mira Local-Life Butler Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="mark">M</span>
+        <span>Mira Local-Life Butler</span>
+      </div>
+      <nav>
+        <button class="nav-item active" type="button">实时总览<span>Live Overview</span></button>
+        <button class="nav-item" type="button">事件时间线<span>Event Timeline</span></button>
+        <button class="nav-item" type="button">技能中心<span>Skills Center</span></button>
+        <button class="nav-item" type="button">订单与履约<span>Orders & Delivery</span></button>
+        <button class="nav-item" type="button">预算与消费<span>Budget & Spend</span></button>
+        <button class="nav-item" type="button">策略与安全<span>Policy & Safety</span></button>
+      </nav>
+      <div class="runtime">
+        <strong>Mira Runtime</strong>
+        <span>v0.1.0-demo</span>
+      </div>
+    </aside>
+
+    <main class="shell">
+      <header class="topbar">
+        <div class="selectlike">环境：Demo (Mock)</div>
+        <div class="selectlike">模式：Judge Demo</div>
+        <div class="status-dot">系统状态：运行中</div>
+        <button id="refreshBtn" class="icon-button" type="button" title="刷新">刷新</button>
+      </header>
+
+      <section class="grid">
+        <section class="panel timeline-panel">
+          <div class="panel-title">
+            <h1>事件时间线</h1>
+            <span>Event Timeline</span>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+
+        <section class="panel user-panel">
+          <div class="panel-title inline">
+            <h2>用户状态</h2>
+            <span>User State</span>
+          </div>
+          <div class="state-grid">
+            <div><span>位置</span><strong>公司附近</strong></div>
+            <div><span>天气</span><strong>下雨 18°C</strong></div>
+            <div><span>时间</span><strong>20:47</strong></div>
+            <div><span>心率状态</span><strong>low_energy</strong></div>
+            <div><span>活动状态</span><strong>长时间静止</strong></div>
+            <div><span>预算剩余</span><strong>¥1,260.00</strong></div>
+          </div>
+        </section>
+
+        <section class="panel proposal-panel">
+          <div class="panel-title inline">
+            <h2>补给清单</h2>
+            <span>Care Kit Proposal</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>商品</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>预计送达</th>
+              </tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </section>
+
+        <section class="panel budget-panel">
+          <div class="panel-title inline">
+            <h2>预算变化</h2>
+            <span>Budget Before & After</span>
+          </div>
+          <div class="budget-cards">
+            <div>
+              <span>下单前</span>
+              <strong id="budgetBefore">¥1,260.00</strong>
+            </div>
+            <div class="arrow">→</div>
+            <div class="after">
+              <span>下单后</span>
+              <strong id="budgetAfter">¥1,217.30</strong>
+            </div>
+          </div>
+          <div class="policy-row">
+            <span>分类：健康/应急</span>
+            <span id="recordState">记录状态：待确认</span>
+          </div>
+        </section>
+
+        <section class="panel delivery-panel">
+          <div class="panel-title inline">
+            <h2>履约跟踪</h2>
+            <span>Delivery Tracking</span>
+          </div>
+          <p id="orderId">订单 ID：等待确认</p>
+          <div class="progress">
+            <span class="done">订单创建</span>
+            <span class="done">骑手接单</span>
+            <span>取货中</span>
+            <span>配送中</span>
+            <span>预计送达</span>
+          </div>
+          <button id="confirmBtn" class="primary" type="button">模拟用户确认</button>
+        </section>
+
+        <section class="panel summary-panel">
+          <div class="panel-title inline">
+            <h2>最近事件摘要</h2>
+            <span>Recent Events</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>事件类型</th>
+                <th>来源</th>
+                <th>摘要</th>
+              </tr>
+            </thead>
+            <tbody id="eventsBody"></tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
