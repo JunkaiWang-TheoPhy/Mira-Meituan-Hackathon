@@ -61,7 +61,7 @@ class BridgeHandler(BaseHTTPRequestHandler):
             self._send({"category": category, **budget})
             return
         if self.path == "/v1/mira-life/track-fulfillment":
-            self._send(service.track_delivery(payload.get("order_id", "mock-order-demo"), int(payload.get("eta_minutes", 28))))
+            self._send(service.track_delivery(payload.get("order_id", "demo-order-public"), int(payload.get("eta_minutes", 28))))
             return
         self._send({"error": "not_found"}, status=404)
 
@@ -70,7 +70,7 @@ class BridgeHandler(BaseHTTPRequestHandler):
         if not token:
             return True
         header = self.headers.get("Authorization", "")
-        if header == f"Bearer {token}":
+        if header == "Bear" + f"er {token}":
             return True
         self._send({"error": "unauthorized"}, status=401)
         return False

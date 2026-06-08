@@ -6,8 +6,10 @@ Duration: 90 seconds.
 
 ```json
 {
-  "user": "Demo User",
-  "location": "公司附近",
+  "user": "Public Demo Visitor",
+  "location_label": "演示区域A",
+  "demo_area": "zone_a",
+  "geo_bucket": "mock-city-center",
   "budget_remaining": 1260,
   "preferences": {
     "delivery_preference": "30分钟内优先",
@@ -25,11 +27,11 @@ Duration: 90 seconds.
 
 ```text
 20:47
-用户还在公司
+用户仍在演示区域A
 手表状态：低能量，长时间未离开
-日程：今天连续会议
+日程：连续会议后加班
 天气：下雨
-Memory：用户有常用应急补给包
+Memory：公开 mock 常用补给包
 ```
 
 ## Mira Says
@@ -44,9 +46,10 @@ Memory：用户有常用应急补给包
 
 ```text
 instant-retail-skill
--> 查询附近库存
+-> 查询 mock 库存
 -> 选择 ETA 短且不超预算的商品
 -> 创建订单预览
+-> policy gate 要求确认
 -> 用户确认
 -> mock 下单
 -> 返回配送 ETA
@@ -58,18 +61,18 @@ instant-retail-skill
 ```text
 [20:47:03] Heartbeat triggered
 [20:47:04] 状态：晚间加班 / 长时间未离开 / 天气下雨
-[20:47:05] Memory：用户常用应急补给包
+[20:47:05] Memory：公开 mock 常用补给包
 [20:47:06] Skill selected：instant-retail-skill
-[20:47:07] 库存匹配：附近便利店有货
+[20:47:07] 库存匹配：mock 便利店有货
 [20:47:08] ETA：28min
 [20:47:09] Policy：confirmation_required
 [20:47:15] 用户确认
-[20:47:16] Mock order created
+[20:47:16] Demo order created
 [20:47:17] Budget updated
 ```
 
 Run:
 
 ```bash
-bash scripts/run_instant_retail_demo.sh
+npm run demo:retail
 ```

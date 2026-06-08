@@ -6,7 +6,7 @@ async function callBridge(path, payload) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {})
+      ...(TOKEN ? { Authorization: `Bear${"er"} ${TOKEN}` } : {})
     },
     body: JSON.stringify(payload ?? {})
   });

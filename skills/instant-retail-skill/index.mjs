@@ -15,7 +15,7 @@ export function listEmergencyKits(profile = readJson("config/mira_user_profile.m
   };
 }
 
-export function searchRetailInventory(query, location = "公司附近") {
+export function searchRetailInventory(query, location = "演示区域A") {
   const poi = readJson("config/meituan_poi.mock.json");
   const inventory = readJson("config/meituan_inventory.mock.json");
   const retailStoreIds = new Set(
@@ -38,7 +38,7 @@ export function rankRetailOptions(items, profile, budget, etaByStore) {
     .sort((a, b) => Number(b.preference_hit) - Number(a.preference_hit) || a.eta_minutes - b.eta_minutes);
 }
 
-export function createRetailOrderPreview(items, address = "公司附近", budget = 80) {
+export function createRetailOrderPreview(items, address = "演示区域A", budget = 80) {
   const delivery = readJson("config/meituan_delivery.mock.json");
   const total = Number(items.reduce((sum, item) => sum + item.price * (item.quantity ?? 1), 0).toFixed(2));
   const storeId = items[0]?.store_id;

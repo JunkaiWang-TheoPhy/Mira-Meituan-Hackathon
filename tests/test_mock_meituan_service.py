@@ -21,7 +21,7 @@ class MockMeituanServiceTest(unittest.TestCase):
                     "store_id": "poi-familymart-001"
                 }
             ],
-            address_label="公司附近",
+            address_label="演示区域A",
             category="health_emergency"
         )
 

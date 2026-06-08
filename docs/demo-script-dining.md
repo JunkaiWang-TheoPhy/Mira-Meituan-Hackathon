@@ -12,6 +12,7 @@ last_meal_hours = 7.5
 recent_food = 麻辣烫, 炸鸡
 avoid = 香菜, 太辣
 weather = rain
+location_label = 演示区域A
 budget_remaining = 1217.3
 ```
 
@@ -22,5 +23,5 @@ budget_remaining = 1217.3
 Run all scenarios:
 
 ```bash
-python3 scripts/run_mira_demo.py
+npm run demo
 ```

@@ -159,13 +159,14 @@ nav {
   padding: 18px;
 }
 
-.timeline-panel,
-.summary-panel {
+.timeline-panel {
   grid-column: 1;
+  grid-row: span 4;
 }
 
 .user-panel,
 .proposal-panel,
+.policy-panel,
 .budget-panel,
 .delivery-panel {
   grid-column: 2;
@@ -337,6 +338,29 @@ tr:last-child td {
   font-size: 13px;
 }
 
+.policy-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.policy-stack div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.policy-stack span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.policy-stack strong {
+  color: var(--teal-dark);
+  font-size: 14px;
+}
+
 .progress {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -390,9 +414,9 @@ tr:last-child td {
   }
 
   .timeline-panel,
-  .summary-panel,
   .user-panel,
   .proposal-panel,
+  .policy-panel,
   .budget-panel,
   .delivery-panel {
     grid-column: 1;

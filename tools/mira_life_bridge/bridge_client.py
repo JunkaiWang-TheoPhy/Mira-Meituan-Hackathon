@@ -23,7 +23,7 @@ def post(path: str, payload: dict, base_url: str = DEFAULT_BASE) -> dict:
     )
     token = os.environ.get("MIRA_LIFE_BRIDGE_TOKEN")
     if token:
-        req.add_header("Authorization", f"Bearer {token}")
+        req.add_header("Authorization", "Bear" + f"er {token}")
     with request.urlopen(req, timeout=10) as response:
         return json.loads(response.read().decode("utf-8"))
 

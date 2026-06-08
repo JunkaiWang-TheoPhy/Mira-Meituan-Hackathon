@@ -22,6 +22,13 @@ def _timestamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
+def _public_path(path: Path, root: Path = ROOT) -> str:
+    try:
+        return path.relative_to(root).as_posix()
+    except ValueError:
+        return path.name
+
+
 def run_demo(*, confirm: bool = True, root: Path = ROOT) -> dict:
     event_path = root / "config" / "demo_event_period_care_needed.json"
     event = json.loads(event_path.read_text(encoding="utf-8"))
@@ -40,6 +47,7 @@ def run_demo(*, confirm: bool = True, root: Path = ROOT) -> dict:
     summary = {
         "demo": "instant_retail",
         "created_at": datetime.now(timezone.utc).isoformat(),
+        "output_path": _public_path(run_dir / "summary.json", root),
         "event": event,
         "route": routed,
         "order": order,
@@ -76,7 +84,7 @@ def main() -> None:
         print(line)
     if summary["order"]:
         print(f"\nMock order: {summary['order']['order_id']}")
-    print(f"Summary: {result['summary_path']}")
+    print(f"Summary: {_public_path(Path(result['summary_path']))}")
 
 
 if __name__ == "__main__":

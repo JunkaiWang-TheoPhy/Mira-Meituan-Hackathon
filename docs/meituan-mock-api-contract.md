@@ -42,7 +42,7 @@ GET  /v1/mira-life/bundles
 
 ```json
 {
-  "order_id": "mock-order-...",
+  "order_id": "demo-order-public-001",
   "status": "mock_order_created",
   "eta_minutes": 28,
   "tracking": {

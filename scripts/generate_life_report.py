@@ -11,6 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def public_path(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.name
+
+
 def latest_summary() -> Path:
     summaries = sorted((ROOT / "runtime" / "demo-runs").glob("*/summary.json"))
     if not summaries:
@@ -27,7 +34,7 @@ def main() -> None:
         "# Mira Life Report",
         "",
         f"Generated at: {datetime.now(timezone.utc).isoformat()}",
-        f"Source: {source}",
+        f"Source: {public_path(source)}",
         "",
         "## 今天 Mira 为你做了什么",
         ""
@@ -46,7 +53,7 @@ def main() -> None:
     out = ROOT / "runtime" / "reports" / f"life-report-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(out)
+    print(public_path(out))
 
 
 if __name__ == "__main__":

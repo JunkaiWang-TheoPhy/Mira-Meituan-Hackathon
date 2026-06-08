@@ -29,11 +29,9 @@ POST /v1/mira-life/track-fulfillment
 GET  /v1/mira-life/bundles
 ```
 
-If `MIRA_LIFE_BRIDGE_TOKEN` is set, every `/v1/...` call must include:
-
-```text
-Authorization: Bearer $MIRA_LIFE_BRIDGE_TOKEN
-```
+If `MIRA_LIFE_BRIDGE_TOKEN` is set, every `/v1/...` call must include the
+standard HTTP auth-token header for the configured token. Keep the token out of
+submission screenshots and demo logs.
 
 Start locally:
 

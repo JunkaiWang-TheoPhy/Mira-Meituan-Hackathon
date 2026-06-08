@@ -8,7 +8,7 @@ This demo shows that Mira manages life rhythm, not only shopping.
 
 ```text
 22:00 Heartbeat
-明早 8:00 跨区会议
+明早 8:00 mock 跨区会议
 天气：下雨
 历史风险：早高峰通勤可能延迟
 ```
@@ -20,6 +20,8 @@ This demo shows that Mira manages life rhythm, not only shopping.
 ## Execution
 
 ```text
+npm run demo
+
 schedule-mobility-skill
 -> read upcoming schedule
 -> estimate commute risk

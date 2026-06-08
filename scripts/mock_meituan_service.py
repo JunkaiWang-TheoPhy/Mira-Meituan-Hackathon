@@ -12,10 +12,11 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
-from uuid import uuid4
+from itertools import count
 
 
 ROOT = Path(__file__).resolve().parents[1]
+_ORDER_COUNTER = count(1)
 
 
 def load_json(path: Path) -> Any:
@@ -154,7 +155,7 @@ class MockMeituanService:
         total_price = round(sum(item["price"] * item.get("quantity", 1) for item in items), 2)
         return {
             "kind": "instant_retail_order_preview",
-            "preview_id": f"preview-{uuid4().hex[:10]}",
+            "preview_id": f"demo-preview-{next(_ORDER_COUNTER):03d}",
             "items": items,
             "eta_minutes": self.delivery[store_id]["eta_minutes"],
             "total_price": total_price,
@@ -166,7 +167,7 @@ class MockMeituanService:
     def confirm_mock_order(self, preview: dict[str, Any], output_dir: Path | None = None) -> dict[str, Any]:
         output_dir = output_dir or (self.root / "runtime" / "mock-orders")
         output_dir.mkdir(parents=True, exist_ok=True)
-        order_id = f"mock-order-{uuid4().hex[:10]}"
+        order_id = f"demo-order-public-{next(_ORDER_COUNTER):03d}"
         order = {
             "order_id": order_id,
             "status": "mock_order_created",
@@ -175,7 +176,7 @@ class MockMeituanService:
             "eta_minutes": preview["eta_minutes"],
             "total_price": preview["total_price"],
             "category": preview.get("category", "instant_retail"),
-            "address_label": preview.get("address_label", "公司附近"),
+            "address_label": preview.get("address_label", "演示区域A"),
             "tracking": self.track_delivery(order_id, preview["eta_minutes"])
         }
         (output_dir / f"{order_id}.json").write_text(

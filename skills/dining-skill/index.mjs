@@ -15,7 +15,7 @@ export function inferMealNeed(context) {
   };
 }
 
-export function searchDiningCandidates(location = "公司附近") {
+export function searchDiningCandidates(location = "演示区域A") {
   const poi = readJson("config/meituan_poi.mock.json");
   const inventory = readJson("config/meituan_inventory.mock.json");
   const diningStoreIds = new Set(

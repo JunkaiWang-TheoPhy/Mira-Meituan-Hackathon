@@ -1,26 +1,29 @@
-# Mira: OpenClaw-Based Local-Life Private Butler
+# Mira: OpenClaw-Style Local-Life Butler
 
-Mira is a proactive local-life butler, not a search chatbot. It converts watch,
-glasses, phone, calendar, location, weather, memory, and budget signals into
-confirmable local-life actions: dining, instant retail, mobility,
+Mira is a roadshow-ready local-life Agent demo. It turns multi-device context
+into confirmable life actions: instant retail, dining, mobility,
 entertainment, and budget care.
 
-Core line:
+This repository is a non-official hackathon mock demo. It does not call real
+platform APIs, place real orders, or collect real health, identity, or location
+data. All user profiles, areas, inventory, budgets, orders, and ETAs are public
+mock seeds.
 
-> Mira understands you, OpenClaw schedules the skills, and Meituan-style local
-> fulfillment gets things done.
-
-Run the primary instant-retail demo:
+Primary demo:
 
 ```bash
-python3 scripts/run_instant_retail_demo.py
+npm run demo:retail
 ```
 
-Run tests:
+All scenarios:
+
+```bash
+npm run demo
+```
+
+Tests:
 
 ```bash
 python3 -m unittest discover -s tests
+node --check web/mira_console/app.js
 ```
-
-This repository is mock-only. It does not call real Meituan APIs, collect real
-health data, or place real orders.

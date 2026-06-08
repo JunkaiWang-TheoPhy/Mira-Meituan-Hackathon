@@ -37,31 +37,31 @@
       <section class="grid">
         <section class="panel timeline-panel">
           <div class="panel-title">
-            <h1>事件时间线</h1>
-            <span>Event Timeline</span>
+            <h1>事件</h1>
+            <span>Life Event Timeline</span>
           </div>
           <div id="timeline" class="timeline"></div>
         </section>
 
         <section class="panel user-panel">
           <div class="panel-title inline">
-            <h2>用户状态</h2>
+            <h2>状态</h2>
             <span>User State</span>
           </div>
           <div class="state-grid">
-            <div><span>位置</span><strong>公司附近</strong></div>
-            <div><span>天气</span><strong>下雨 18°C</strong></div>
-            <div><span>时间</span><strong>20:47</strong></div>
-            <div><span>心率状态</span><strong>low_energy</strong></div>
-            <div><span>活动状态</span><strong>长时间静止</strong></div>
-            <div><span>预算剩余</span><strong>¥1,260.00</strong></div>
+            <div><span>区域</span><strong id="stateLocation">演示区域A</strong></div>
+            <div><span>天气</span><strong id="stateWeather">下雨</strong></div>
+            <div><span>时间</span><strong id="stateTime">20:47</strong></div>
+            <div><span>状态</span><strong id="stateHeart">low_energy</strong></div>
+            <div><span>活动</span><strong id="stateActivity">长时间静止</strong></div>
+            <div><span>预算</span><strong id="stateBudget">¥1,260.00</strong></div>
           </div>
         </section>
 
         <section class="panel proposal-panel">
           <div class="panel-title inline">
-            <h2>补给清单</h2>
-            <span>Care Kit Proposal</span>
+            <h2>Skill</h2>
+            <span id="selectedSkill">instant-retail-skill</span>
           </div>
           <table>
             <thead>
@@ -74,6 +74,18 @@
             </thead>
             <tbody id="itemsBody"></tbody>
           </table>
+        </section>
+
+        <section class="panel policy-panel">
+          <div class="panel-title inline">
+            <h2>Policy</h2>
+            <span>Safety Gate</span>
+          </div>
+          <div class="policy-stack">
+            <div><span>决策</span><strong id="policyStatus">confirmation_required</strong></div>
+            <div><span>隐私</span><strong>mock_private / no real data</strong></div>
+            <div><span>动作</span><strong>等待用户确认后 mock 下单</strong></div>
+          </div>
         </section>
 
         <section class="panel budget-panel">
@@ -112,24 +124,6 @@
             <span>预计送达</span>
           </div>
           <button id="confirmBtn" class="primary" type="button">模拟用户确认</button>
-        </section>
-
-        <section class="panel summary-panel">
-          <div class="panel-title inline">
-            <h2>最近事件摘要</h2>
-            <span>Recent Events</span>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>时间</th>
-                <th>事件类型</th>
-                <th>来源</th>
-                <th>摘要</th>
-              </tr>
-            </thead>
-            <tbody id="eventsBody"></tbody>
-          </table>
         </section>
       </section>
     </main>

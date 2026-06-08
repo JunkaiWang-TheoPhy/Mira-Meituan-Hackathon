@@ -57,6 +57,8 @@
       "type": "object",
       "properties": {
         "location_label": { "type": "string" },
+        "demo_area": { "type": "string" },
+        "geo_bucket": { "type": "string" },
         "time_of_day": { "type": "string" },
         "weather": { "type": "string" },
         "heart_state": { "type": "string" },

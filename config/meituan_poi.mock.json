@@ -3,7 +3,7 @@
     "poi_id": "poi-familymart-001",
     "name": "美团闪购·附近便利店",
     "category": "instant_retail",
-    "location_label": "公司附近",
+    "location_label": "演示区域A",
     "distance_m": 620,
     "open_now": true,
     "rating": 4.8
@@ -12,7 +12,7 @@
     "poi_id": "poi-pharmacy-001",
     "name": "美团闪购·安心药房",
     "category": "instant_retail",
-    "location_label": "公司附近",
+    "location_label": "演示区域A",
     "distance_m": 940,
     "open_now": true,
     "rating": 4.7
@@ -21,7 +21,7 @@
     "poi_id": "poi-noodle-001",
     "name": "暖胃汤面",
     "category": "dining",
-    "location_label": "公司附近",
+    "location_label": "演示区域A",
     "distance_m": 880,
     "open_now": true,
     "rating": 4.9
@@ -30,7 +30,7 @@
     "poi_id": "poi-ride-001",
     "name": "美团打车 Mock",
     "category": "mobility",
-    "location_label": "公司附近",
+    "location_label": "演示区域A",
     "distance_m": 0,
     "open_now": true,
     "rating": 4.8
@@ -39,7 +39,7 @@
     "poi_id": "poi-cinema-001",
     "name": "安静影厅",
     "category": "entertainment",
-    "location_label": "公司附近",
+    "location_label": "演示区域A",
     "distance_m": 1600,
     "open_now": true,
     "rating": 4.6

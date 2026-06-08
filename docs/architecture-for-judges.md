@@ -1,56 +1,47 @@
 # Architecture for Judges
 
-Mira keeps the original Mira Light philosophy of proactive sensing, but changes
-the action layer from embodied lamp scenes to local-life fulfillment.
+Mira keeps the proactive sensing idea from Mira Light, but changes the action
+layer from device motion to local-life fulfillment.
 
 ```text
-Mira Light:
-camera input
--> vision event extraction
--> scene selection
--> bridge / safety layer
--> ESP32 lamp motion + light response
-
-Mira Local-Life Butler:
-watch / glasses / phone / calendar / location
+multi-device state
 -> life event extraction
--> OpenClaw-style memory + heartbeat
--> life intent decision
--> local-life skills
--> bridge / policy gate
--> recommendation / confirmation / mock order / ETA tracking
--> life memory writeback
+-> skill routing
+-> policy gate
+-> mock local-life proposal
+-> user confirmation
+-> mock order / ETA / budget writeback
 ```
 
-## Layers
+## What to Look For
 
-| Layer | Role |
+| Stage | What the demo proves |
 | --- | --- |
-| Gateway | Receives watch, glasses, phone, calendar, location, and user confirmation events. |
-| Heartbeat | Periodically checks meal risk, commute risk, budget pressure, weather, and inventory-sensitive situations. |
-| Memory | Stores mock preferences, dislikes, budget, common care items, recent meals, and addresses. |
-| Skills | Encapsulates dining, instant retail, mobility, entertainment, and budget care. |
-| Bridge | Presents stable high-level tools to OpenClaw-style callers. |
-| Policy | Requires confirmation for money, health-adjacent context, privacy, and budget risk. |
+| State | Watch, calendar, weather, area, budget, and preferences form one life context. |
+| Event | `period_care_needed` is extracted as a low-disturbance life event. |
+| Skill | `instant-retail-skill` is selected instead of generic search. |
+| Policy | Money and sensitive context require confirmation. |
+| Fulfillment | Mock POI, inventory, ETA, order, tracking, and budget writeback complete the loop. |
 
-## Primary Fulfillment Loop
+## Main Loop
 
 ```text
 period_care_needed
 -> instant-retail-skill
--> nearby inventory match
--> delivery ETA ranking
--> budget check
--> confirmation-required policy
--> mock order
--> delivery tracking
--> budget memory writeback
+-> mock inventory match
+-> ETA + budget ranking
+-> confirmation_required
+-> user confirmation
+-> demo-order-public-* created
+-> budget_after recorded
 ```
 
 ## Why Instant Retail Is the Main Demo
 
-Dining and entertainment can look like ordinary recommendation. Instant retail
-shows the platform fulfillment advantage: local inventory, SKU choice, LBS,
-delivery ETA, substitutions, budget, and order tracking. The demo is not “what
-can I buy nearby?” It is “Mira noticed a timely life need and prepared a safe,
-confirmable action.”
+餐饮和娱乐容易被理解成“推荐”。即时零售更能体现履约闭环：商品、库存、区域、配送时效、替代品、预算和确认缺一不可。Mira 的重点不是“附近有什么”，而是“它在你开口前发现了一个生活需求，并把可确认的方案准备好”。
+
+## Non-Official Mock Boundary
+
+All platform-like data in this repository is public mock data. The bridge and
+skills use platform-shaped interfaces for demonstration, but do not call real
+platform APIs or create real orders.

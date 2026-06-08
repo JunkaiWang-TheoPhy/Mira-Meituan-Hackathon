@@ -1,13 +1,13 @@
 {
-  "user_id": "demo-user",
-  "display_name": "Demo User",
-  "location_label": "公司附近",
+  "user_id": "public-demo-visitor",
+  "display_name": "Public Demo Visitor",
+  "location_label": "演示区域A",
   "address_book": [
     {
-      "label": "公司附近",
-      "address": "Mira Hackathon Demo Office",
-      "lat": 31.2304,
-      "lng": 121.4737
+      "label": "演示区域A",
+      "address_hint": "public_demo_zone_a",
+      "demo_area": "zone_a",
+      "geo_bucket": "mock-city-center"
     }
   ],
   "preferences": {
