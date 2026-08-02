@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "event_type": "birthday_gift_due",
+  "timestamp": "2026-06-07T18:30:00+08:00",
+  "source": {
+    "watch": false,
+    "glasses": false,
+    "phone": true,
+    "calendar": true,
+    "meituan_mock": false,
+    "user_input": false
+  },
+  "confidence": 0.84,
+  "context": {
+    "location_label": "演示区域A",
+    "demo_area": "zone_a",
+    "geo_bucket": "mock-city-center",
+    "time_of_day": "evening",
+    "budget_remaining": 260.0,
+    "recipient_group": "family",
+    "occasion": "birthday",
+    "deadline": "本周内"
+  },
+  "policy": {
+    "requires_confirmation": true,
+    "max_budget": 180.0,
+    "privacy_level": "public_demo",
+    "can_place_order": true
+  }
+}

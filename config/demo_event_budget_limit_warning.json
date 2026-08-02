@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "event_type": "budget_limit_warning",
+  "timestamp": "2026-06-07T21:10:00+08:00",
+  "source": {
+    "watch": false,
+    "glasses": false,
+    "phone": true,
+    "calendar": false,
+    "meituan_mock": true,
+    "user_input": false
+  },
+  "confidence": 0.9,
+  "context": {
+    "location_label": "演示区域A",
+    "demo_area": "zone_a",
+    "geo_bucket": "mock-city-center",
+    "time_of_day": "evening",
+    "budget_remaining": 48.0
+  },
+  "policy": {
+    "requires_confirmation": false,
+    "max_budget": 0,
+    "privacy_level": "public_demo",
+    "can_place_order": false
+  }
+}

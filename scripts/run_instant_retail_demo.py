@@ -55,12 +55,13 @@ def run_demo(*, confirm: bool = True, root: Path = ROOT) -> dict:
             "[20:47:03] Heartbeat triggered",
             "[20:47:04] 状态：晚间加班 / 长时间未离开 / 天气下雨",
             "[20:47:05] Memory：用户常用应急补给包",
-            "[20:47:06] Skill selected：instant-retail-skill",
+            f"[20:47:06] Skill selected：{routed['selected_skill']}",
+            f"[20:47:06] Fulfillment skill：{routed['fulfillment_skill']}",
             "[20:47:07] 库存匹配：附近便利店有货",
             f"[20:47:08] ETA：{routed['proposal']['eta_minutes']}min",
             f"[20:47:09] Policy：{routed['policy_decision']['status']}",
             "[20:47:15] 用户确认" if confirm else "[20:47:15] 等待用户确认",
-            "[20:47:16] Mock order created" if confirm else "[20:47:16] No order created",
+            "[20:47:16] Demo order created" if confirm else "[20:47:16] No order created",
             "[20:47:17] Budget updated" if confirm else "[20:47:17] Budget unchanged"
         ]
     }

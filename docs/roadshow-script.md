@@ -8,7 +8,11 @@ Mira 不是一个“附近有什么”的搜索助手。它是一个基于 OpenC
 
 现在是晚上 20:47，用户还在演示区域 A。手表状态低能量，日程显示连续会议后加班，天气下雨。Mira 的 heartbeat 触发后，不是推荐一堆店，而是识别为一个低打扰的即时生活需求。
 
-Mira 选择 `instant-retail-skill`，用公开 mock 库存和预算生成常用补给包。Policy gate 判断这涉及金钱和敏感上下文，所以不能自动下单。用户确认后，系统创建 `demo-order-public-*`，返回 28 分钟 ETA，并把预算从 1260 记录到 1217.3。
+Mira 先选择 `period-care-restock`，克制地规划常用补给包；再把履约交给 `instant-retail-skill`，用公开 mock 库存和预算生成可确认订单。Policy gate 判断这涉及金钱和敏感上下文，所以不能自动下单。用户确认后，系统创建 `demo-order-public-*`，返回 28 分钟 ETA，并把预算从 1260 记录到 1217.3。
+
+## Extra Skill Value
+
+除了主 Demo，仓库还合入了三个生活规划方向：`gifts-flowers-planner` 负责礼物鲜花提醒，`supermarket-daily-supplies` 负责日用品补货，`pocket-wallet-budget` 负责小钱包预算。它们共同说明 Mira 不是单点购物助手，而是能管理生活节奏的 Agent。
 
 ## 15-Second Safety Note
 

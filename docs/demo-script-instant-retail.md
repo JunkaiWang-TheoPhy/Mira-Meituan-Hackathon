@@ -45,7 +45,8 @@ Memory：公开 mock 常用补给包
 ## Execution
 
 ```text
-instant-retail-skill
+period-care-restock
+-> instant-retail-skill
 -> 查询 mock 库存
 -> 选择 ETA 短且不超预算的商品
 -> 创建订单预览
@@ -62,7 +63,8 @@ instant-retail-skill
 [20:47:03] Heartbeat triggered
 [20:47:04] 状态：晚间加班 / 长时间未离开 / 天气下雨
 [20:47:05] Memory：公开 mock 常用补给包
-[20:47:06] Skill selected：instant-retail-skill
+[20:47:06] Skill selected：period-care-restock
+[20:47:06] Fulfillment skill：instant-retail-skill
 [20:47:07] 库存匹配：mock 便利店有货
 [20:47:08] ETA：28min
 [20:47:09] Policy：confirmation_required

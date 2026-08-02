@@ -10,3 +10,7 @@
 - [demo-video-storyboard.md](./demo-video-storyboard.md): 30-second video plan.
 - [judge-walkthrough.md](./judge-walkthrough.md): 3-minute judge reading and demo path.
 - [roadshow-script.md](./roadshow-script.md): roadshow narration and timing.
+
+Imported repo-local skills from `skills.zip` are documented under `../skills/`:
+`period-care-restock`, `gifts-flowers-planner`, `pocket-wallet-budget`, and
+`supermarket-daily-supplies`.

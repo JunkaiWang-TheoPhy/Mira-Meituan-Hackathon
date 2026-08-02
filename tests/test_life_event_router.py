@@ -14,7 +14,8 @@ class LifeEventRouterTest(unittest.TestCase):
 
         result = route_life_event(event, root=ROOT)
 
-        self.assertEqual(result["selected_skill"], "instant-retail-skill")
+        self.assertEqual(result["selected_skill"], "period-care-restock")
+        self.assertEqual(result["fulfillment_skill"], "instant-retail-skill")
         self.assertEqual(result["policy_decision"]["status"], "confirmation_required")
         self.assertTrue(result["proposal"]["requires_confirmation"])
         self.assertLess(result["proposal"]["total_price"], event["policy"]["max_budget"])
@@ -38,9 +39,23 @@ class LifeEventRouterTest(unittest.TestCase):
 
         result = route_life_event(event, root=ROOT)
 
-        self.assertEqual(result["selected_skill"], "budget-care-skill")
+        self.assertEqual(result["selected_skill"], "pocket-wallet-budget")
         self.assertEqual(result["policy_decision"]["status"], "advisory_only")
         self.assertIn("预算", result["mira_line"])
+
+    def test_zip_skills_route_to_planning_skills(self):
+        cases = {
+            "demo_event_period_care_needed.json": ("period-care-restock", "instant-retail-skill"),
+            "demo_event_birthday_gift_due.json": ("gifts-flowers-planner", "instant-retail-skill"),
+            "demo_event_budget_limit_warning.json": ("pocket-wallet-budget", None),
+            "demo_event_daily_supplies_low.json": ("supermarket-daily-supplies", "instant-retail-skill"),
+        }
+        for filename, expected in cases.items():
+            with self.subTest(filename=filename):
+                event = json.loads((ROOT / "config" / filename).read_text())
+                result = route_life_event(event, root=ROOT)
+                self.assertEqual(result["selected_skill"], expected[0])
+                self.assertEqual(result["fulfillment_skill"], expected[1])
 
 
 if __name__ == "__main__":

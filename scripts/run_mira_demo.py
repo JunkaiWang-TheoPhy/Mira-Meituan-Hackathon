@@ -27,7 +27,13 @@ def _public_path(path: Path) -> str:
 def main() -> None:
     retail = run_retail_demo(confirm=True, root=ROOT)
     scenarios = [retail["summary"]]
-    for filename in ["demo_event_meal_risk_detected.json", "demo_event_commute_risk.json"]:
+    for filename in [
+        "demo_event_meal_risk_detected.json",
+        "demo_event_commute_risk.json",
+        "demo_event_birthday_gift_due.json",
+        "demo_event_daily_supplies_low.json",
+        "demo_event_budget_limit_warning.json",
+    ]:
         event = json.loads((ROOT / "config" / filename).read_text(encoding="utf-8"))
         scenarios.append({
             "demo": event["event_type"],
