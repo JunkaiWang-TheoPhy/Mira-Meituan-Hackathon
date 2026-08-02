@@ -6,6 +6,7 @@
       "description": "Smallest judge-safe set: food, instant retail, and commute reminders.",
       "intents": [
         "dining_recommendation",
+        "period_care_restock",
         "instant_retail_order",
         "schedule_mobility_reminder"
       ]
@@ -14,6 +15,7 @@
       "title": "Retail Killer Demo",
       "description": "Primary 90-second demo focused on Meituan-style instant retail fulfillment.",
       "intents": [
+        "period_care_restock",
         "period_care_retail",
         "rainy_day_retail_fallback",
         "mock_order_confirmation",
@@ -28,6 +30,8 @@
         "instant_retail_order",
         "schedule_mobility_reminder",
         "weekend_entertainment",
+        "daily_supplies_restock",
+        "gift_flowers_planning",
         "budget_summary"
       ]
     },
@@ -40,6 +44,9 @@
         "schedule_mobility_reminder",
         "weekend_entertainment",
         "family_gift_care",
+        "daily_supplies_restock",
+        "period_care_restock",
+        "pocket_wallet_budget",
         "monthly_budget_planning",
         "life_daily_report"
       ]

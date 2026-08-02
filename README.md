@@ -30,7 +30,7 @@ multi-device context
 npm run demo:retail
 ```
 
-运行完整三场景 demo：
+运行完整多场景 demo：
 
 ```bash
 npm run demo
@@ -56,11 +56,20 @@ runtime/mock-orders/demo-order-public-*.json
 ## 已实现能力
 
 - Mock life event schema：解释“为什么触发、准备做什么、是否有权做”。
-- OpenClaw 风格 Skill：即时零售、餐饮、日程出行、娱乐、预算。
+- OpenClaw 风格 Skill：即时零售、餐饮、日程出行、娱乐、预算，以及从 `skills.zip` 合入的经期补货、礼物鲜花、小钱包预算、日用品补货。
 - Mock local-life service：POI、库存、配送 ETA、订单、用户画像、预算。
 - Mira Life Bridge：稳定高层 API，隔离底层 mock 数据。
 - Policy gate：金钱、敏感上下文、位置和预算风险都需要确认。
 - Roadshow console：六块静态评委视图，使用 `config/mira_console_seed.mock.json`。
+
+## 新增四个生活规划技能
+
+| Skill | 负责什么 | 履约关系 |
+| --- | --- | --- |
+| `period-care-restock` | 克制地规划常用关怀补给包，是主 Demo 的 planning skill。 | 交给 `instant-retail-skill` 做 mock 库存、ETA、订单。 |
+| `gifts-flowers-planner` | 生日、节日、探访、道歉等礼物/鲜花规划。 | 需要确认对象、卡片、地址和时间后再进入 mock 履约。 |
+| `pocket-wallet-budget` | 小钱包预算、桶分配、是否超预算。 | 只做 advisory，不直接下单。 |
+| `supermarket-daily-supplies` | 日用品缺货和超市补货清单。 | 交给 `instant-retail-skill` 做 mock 履约。 |
 
 ## 入口命令
 
@@ -92,7 +101,7 @@ node --check web/mira_console/app.js
 config/                 mock schema, user profile, budget, POI, inventory, delivery, console seed
 docs/                   submission copy, judge walkthrough, architecture, scripts, safety
 scripts/                event router, mock service, demo runners, report generator
-skills/                 OpenClaw-style local-life skill surfaces
+skills/                 OpenClaw-style local-life skill surfaces, including zip-imported planning skills
 tools/mira_life_bridge/ loopback bridge and plugin wrapper
 web/mira_console/       static judge console
 runtime/                ignored demo outputs with .gitkeep placeholders

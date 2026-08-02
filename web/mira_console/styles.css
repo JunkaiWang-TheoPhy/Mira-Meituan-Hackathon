@@ -288,6 +288,37 @@ table {
   border-radius: 8px;
 }
 
+.skill-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.skill-flow div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.skill-flow span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.skill-flow strong {
+  color: var(--teal-dark);
+  font-size: 14px;
+}
+
+@media (max-width: 620px) {
+  .skill-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
 th,
 td {
   border-bottom: 1px solid var(--line);

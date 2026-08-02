@@ -27,6 +27,7 @@
         "weekend_low_energy",
         "weekend_high_energy",
         "birthday_gift_due",
+        "daily_supplies_low",
         "budget_limit_warning",
         "user_confirmed_action",
         "user_rejected_action"

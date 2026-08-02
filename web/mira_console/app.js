@@ -9,7 +9,8 @@ const fallbackSeed = {
   budget_after: 1217.3,
   eta_minutes: 28,
   policy_status: "confirmation_required",
-  selected_skill: "instant-retail-skill",
+  selected_skill: "period-care-restock",
+  fulfillment_skill: "instant-retail-skill",
   static_order_label: "demo-order-public",
   items: [
     { name: "暖宝宝", quantity: 1, price: 12.9 },
@@ -19,7 +20,8 @@ const fallbackSeed = {
   timeline: [
     ["20:47:03", "Heartbeat triggered", "system", "周期检查触发"],
     ["20:47:04", "Life event extracted", "watch / calendar", "识别到需要低打扰关怀"],
-    ["20:47:06", "Skill selected", "runtime", "选择 instant-retail-skill"],
+    ["20:47:06", "Skill selected", "runtime", "选择 period-care-restock"],
+    ["20:47:06", "Fulfillment skill", "runtime", "履约交给 instant-retail-skill"],
     ["20:47:07", "Policy gate", "policy", "需要用户确认"],
     ["20:47:15", "User confirmation", "console", "等待用户确认"]
   ]
@@ -79,6 +81,7 @@ function renderItems() {
     `
   ].join("");
   document.querySelector("#selectedSkill").textContent = seed.selected_skill;
+  document.querySelector("#fulfillmentSkill").textContent = seed.fulfillment_skill ?? "无";
 }
 
 function renderTimeline() {

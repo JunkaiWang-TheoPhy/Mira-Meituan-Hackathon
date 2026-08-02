@@ -26,7 +26,8 @@ npm run demo:retail
 Expected output includes:
 
 ```text
-Skill selected：instant-retail-skill
+Skill selected：period-care-restock
+Fulfillment skill：instant-retail-skill
 Policy：confirmation_required
 Demo order created
 Budget updated
@@ -46,7 +47,22 @@ The console has six blocks:
 - 预算
 - 履约
 
-## 5. Check Safety
+The Skill block shows:
+
+```text
+period-care-restock -> instant-retail-skill
+```
+
+## 5. Check the Imported Skills
+
+The four `skills.zip` skills are now repo-local product skills:
+
+- `period-care-restock`
+- `gifts-flowers-planner`
+- `pocket-wallet-budget`
+- `supermarket-daily-supplies`
+
+## 6. Check Safety
 
 Open [data-safety.md](./data-safety.md). This is a public mock demo: no real API,
 no real order, no real health data, no real coordinates.

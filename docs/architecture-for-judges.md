@@ -19,7 +19,7 @@ multi-device state
 | --- | --- |
 | State | Watch, calendar, weather, area, budget, and preferences form one life context. |
 | Event | `period_care_needed` is extracted as a low-disturbance life event. |
-| Skill | `instant-retail-skill` is selected instead of generic search. |
+| Skill | `period-care-restock` plans the need; `instant-retail-skill` handles mock fulfillment. |
 | Policy | Money and sensitive context require confirmation. |
 | Fulfillment | Mock POI, inventory, ETA, order, tracking, and budget writeback complete the loop. |
 
@@ -27,6 +27,7 @@ multi-device state
 
 ```text
 period_care_needed
+-> period-care-restock
 -> instant-retail-skill
 -> mock inventory match
 -> ETA + budget ranking
@@ -39,6 +40,17 @@ period_care_needed
 ## Why Instant Retail Is the Main Demo
 
 餐饮和娱乐容易被理解成“推荐”。即时零售更能体现履约闭环：商品、库存、区域、配送时效、替代品、预算和确认缺一不可。Mira 的重点不是“附近有什么”，而是“它在你开口前发现了一个生活需求，并把可确认的方案准备好”。
+
+## Zip-Imported Planning Skills
+
+The repository includes four additional planning skills from `skills.zip`:
+
+| Planning skill | Scenario |
+| --- | --- |
+| `period-care-restock` | Main demo care-kit planning before instant-retail fulfillment. |
+| `gifts-flowers-planner` | Birthday and holiday gift / flower planning. |
+| `pocket-wallet-budget` | Small wallet budget checks and bucket advice. |
+| `supermarket-daily-supplies` | Household daily supplies restock planning. |
 
 ## Non-Official Mock Boundary
 

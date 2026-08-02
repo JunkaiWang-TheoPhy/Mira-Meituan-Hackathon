@@ -18,12 +18,22 @@ from scripts.mock_meituan_service import MockMeituanService
 EVENT_TO_SKILL = {
     "meal_risk_detected": "dining-skill",
     "instant_retail_need_detected": "instant-retail-skill",
-    "period_care_needed": "instant-retail-skill",
+    "period_care_needed": "period-care-restock",
     "calendar_commute_risk": "schedule-mobility-skill",
     "weekend_low_energy": "entertainment-skill",
     "weekend_high_energy": "entertainment-skill",
-    "birthday_gift_due": "budget-care-skill",
-    "budget_limit_warning": "budget-care-skill",
+    "birthday_gift_due": "gifts-flowers-planner",
+    "budget_limit_warning": "pocket-wallet-budget",
+    "daily_supplies_low": "supermarket-daily-supplies",
+}
+
+FULFILLMENT_SKILL = {
+    "period-care-restock": "instant-retail-skill",
+    "supermarket-daily-supplies": "instant-retail-skill",
+    "dining-skill": "dining-skill",
+    "instant-retail-skill": "instant-retail-skill",
+    "schedule-mobility-skill": "schedule-mobility-skill",
+    "gifts-flowers-planner": "instant-retail-skill",
 }
 
 
@@ -111,6 +121,61 @@ def _budget_proposal(event: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _gift_proposal(event: dict[str, Any]) -> dict[str, Any]:
+    context = event.get("context", {})
+    remaining = float(context.get("budget_remaining", 0.0))
+    total_price = min(128.0, remaining if remaining else 128.0)
+    return {
+        "kind": "gift_flowers_plan",
+        "title": "生日礼物与鲜花提醒",
+        "recipient_group": context.get("recipient_group", "family"),
+        "occasion": context.get("occasion", "birthday"),
+        "deadline": context.get("deadline", "本周内"),
+        "tiers": [
+            {"name": "budget", "estimate": 68.0, "idea": "实用小礼物 + 简短卡片"},
+            {"name": "balanced", "estimate": 128.0, "idea": "鲜花 + 轻量礼物"},
+            {"name": "nicer", "estimate": 158.0, "idea": "花束 + 偏好礼物"}
+        ],
+        "eta_minutes": 120,
+        "total_price": total_price,
+        "budget_before": remaining,
+        "budget_after": round(remaining - total_price, 2),
+        "category": "gifts_flowers",
+        "requires_confirmation": True
+    }
+
+
+def _daily_supplies_proposal(event: dict[str, Any]) -> dict[str, Any]:
+    context = event.get("context", {})
+    remaining = float(context.get("budget_remaining", 0.0))
+    max_budget = float(event.get("policy", {}).get("max_budget", 90.0))
+    items = [
+        {"name": "纸巾", "quantity": 1, "price": 18.0, "priority": "must-buy"},
+        {"name": "垃圾袋", "quantity": 1, "price": 12.0, "priority": "must-buy"},
+        {"name": "洗手液", "quantity": 1, "price": 16.0, "priority": "good-to-have"},
+        {"name": "早餐牛奶", "quantity": 1, "price": 24.0, "priority": "good-to-have"}
+    ]
+    selected: list[dict[str, Any]] = []
+    total = 0.0
+    for item in items:
+        next_total = total + item["price"] * item["quantity"]
+        if next_total <= max_budget or item["priority"] == "must-buy":
+            selected.append(item)
+            total = next_total
+    return {
+        "kind": "daily_supplies_plan",
+        "title": "日用品补货清单",
+        "items": selected,
+        "eta_minutes": 35,
+        "total_price": round(total, 2),
+        "budget_before": remaining,
+        "budget_after": round(remaining - total, 2),
+        "category": "daily_supplies",
+        "address_label": context.get("location_label", "演示区域A"),
+        "requires_confirmation": True
+    }
+
+
 def _mira_line(event_type: str, proposal: dict[str, Any], policy_decision: dict[str, Any]) -> str:
     if event_type in {"period_care_needed", "instant_retail_need_detected"}:
         return (
@@ -129,6 +194,16 @@ def _mira_line(event_type: str, proposal: dict[str, Any], policy_decision: dict[
         )
     if event_type == "budget_limit_warning":
         return f"你本周生活预算只剩 {proposal['remaining']:.0f} 元，我会把后续建议控制在必要支出内。"
+    if event_type == "birthday_gift_due":
+        return (
+            f"{proposal['deadline']}有一个生日提醒。我准备了三档礼物/鲜花方案，"
+            f"平衡档约 {proposal['total_price']:.0f} 元，需要你确认对象、卡片和送达时间。"
+        )
+    if event_type == "daily_supplies_low":
+        return (
+            f"你常用日用品快不够了。我按钱包预算整理了{proposal['title']}，"
+            f"预计 {proposal['eta_minutes']} 分钟送达，要我按这个清单下单吗？"
+        )
     return f"我为你准备了一个生活安排：{proposal['title']}。"
 
 
@@ -140,7 +215,14 @@ def route_life_event(event: dict[str, Any], *, root: Path | str | None = None) -
         raise ValueError(f"unsupported event_type: {event_type}")
 
     service = MockMeituanService(root_path)
-    if selected_skill == "instant-retail-skill":
+    fulfillment_skill = FULFILLMENT_SKILL.get(selected_skill)
+
+    if selected_skill == "period-care-restock":
+        proposal = service.build_instant_retail_proposal(event)
+        proposal["kind"] = "period_care_restock_plan"
+        proposal["planning_skill"] = selected_skill
+        proposal["fulfillment_skill"] = fulfillment_skill
+    elif selected_skill == "instant-retail-skill":
         proposal = service.build_instant_retail_proposal(event)
     elif selected_skill == "dining-skill":
         proposal = service.build_dining_proposal(event)
@@ -150,6 +232,12 @@ def route_life_event(event: dict[str, Any], *, root: Path | str | None = None) -
         proposal = _entertainment_proposal(event)
     elif selected_skill == "budget-care-skill":
         proposal = _budget_proposal(event)
+    elif selected_skill == "pocket-wallet-budget":
+        proposal = _budget_proposal(event)
+    elif selected_skill == "gifts-flowers-planner":
+        proposal = _gift_proposal(event)
+    elif selected_skill == "supermarket-daily-supplies":
+        proposal = _daily_supplies_proposal(event)
     else:
         raise ValueError(f"unsupported skill: {selected_skill}")
 
@@ -158,6 +246,7 @@ def route_life_event(event: dict[str, Any], *, root: Path | str | None = None) -
         "schema_version": "1.0.0",
         "event_type": event_type,
         "selected_skill": selected_skill,
+        "fulfillment_skill": fulfillment_skill,
         "confidence": event["confidence"],
         "proposal": proposal,
         "policy_decision": policy_decision,
@@ -172,6 +261,7 @@ def route_life_event(event: dict[str, Any], *, root: Path | str | None = None) -
             "heartbeat_triggered",
             "life_event_extracted",
             f"skill_selected:{selected_skill}",
+            f"fulfillment_skill:{fulfillment_skill}" if fulfillment_skill else "fulfillment_skill:none",
             f"policy:{policy_decision['status']}",
             "await_user_confirmation" if policy_decision.get("requires_confirmation") else "advisory_ready"
         ]
